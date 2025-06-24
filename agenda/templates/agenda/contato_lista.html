@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Agenda de Contatos</title>
+
+    <style>
+        body {margin: 20px;}
+        ul {list-style: none; padding: 0;}
+        li {marign-bottom: 5px;}
+    </style>
+</head>
+<body>
+    <h1>Meus contatos</h1>
+    <a href="{%url 'agenda:contato_criar'%}">Novo contato</a>
+    {% if contatos %}
+       <ul>
+           {% for contato in contatos %}
+                <li>
+                    {{contato.nome}} - {{contato.email}}
+                </li>
+           {% endfor %}
+       </ul>
+    {% else %}
+        <p>Nenhum contado cadastrado.</p>
+    {% endif %}
+</body>
+</html>
