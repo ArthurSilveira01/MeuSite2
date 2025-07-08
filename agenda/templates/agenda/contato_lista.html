@@ -17,7 +17,7 @@
        <ul>
            {% for contato in contatos %}
                 <li>
-                    {{contato.nome}} - {{contato.email}}
+                    <a href="{%url 'agenda:contato_detalhe' contato.pk %}">{{contato.nome}}</a>
                 </li>
            {% endfor %}
        </ul>

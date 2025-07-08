@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ contato.nome }}</title>
+</head>
+<body>
+    <h1>Detalhes de {{ contato.nome }}</h1>
+    <p> <strong>Nome:</strong> {{ contato.nome}}</p>
+    <p> <strong>Telefone:</strong> {{ contato.telefone|default:"Não informado"}}</p>
+    <p> <strong>Endereço:</strong> {{ contato.endereco|default:"Não informado"}}</p>
+    <p> <strong>E-mail:</strong> {{ contato.email|default:"Não informado"}}</p>
+    <p> <strong>Data de nascimento:</strong>
+        {{ contato.data_de_nascimento|date:"d/m/Y"|default:"Não informado" }}</p>
+    <p> <strong>Criado em:</strong> {{ contato.created_at|date:"d/m/Y" }}</p>
+
+    <a href="{% url 'agenda:contato_lista.html' %}">Voltar</a>
+</body>
+</html>
