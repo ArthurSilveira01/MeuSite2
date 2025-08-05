@@ -8,4 +8,5 @@ urlpatterns = [
     path('contato/novo/', views.contato_criar, name='contato_criar'),
     path('contato/<int:pk>/', views.contato_detalhe, name='contato_detalhe'),
     path('contato/<int:pk>/editar/', views.contato_editar, name='contato_editar'),
+    path('contato/<int:pk>/excluir/', views.contato_excluir, name='contato_excluir')
 ]

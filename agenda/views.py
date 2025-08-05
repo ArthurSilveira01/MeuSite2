@@ -51,4 +51,13 @@ def contato_editar(request, pk):
                   'agenda/contato_form.hmtl',
                   {'form' : form, 'contato' : contato, 'titulo_pagina' : 'Editar'})
 
+def contato_excluir(request, pk):
+    contato = get_object_or_404(Contato, pk=pk)
+
+    if request.method == 'POST':
+        contato.delete()
+        return redirect('agenda:contato_lista')
+    return render(request,
+                  'agenda/contato_confirma_exclusao.html',
+                  {'contato' : contato})
 
