@@ -14,6 +14,7 @@
         {{ contato.data_de_nascimento|date:"d/m/Y"|default:"Não informado" }}</p>
     <p> <strong>Criado em:</strong> {{ contato.created_at|date:"d/m/Y" }}</p>
 
-    <a href="{% url 'agenda:contato_lista.html' %}">Voltar</a>
+    <a href="{% url 'agenda:contato_editar.html' contato.pk %}">Voltar</a>
+    <a href="{% url 'agenda:contato_lista' %}">Voltar</a>
 </body>
 </html>
