@@ -1,18 +1,23 @@
+<!-- agenda/templates/agenda/contato_confirm_delete.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Confirmar Exclusao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Exclusão</title>
+    <link rel="stylesheet" href="{% static 'agenda/style.css' %}">
 </head>
 <body>
-    <h1>Confirmar exclusão</h1>
-
-    <p>Tem certeza de que deseja excluir o contato **"{{ contato.nome }}"**?</p>
-
-    <form method="post">
-        <button type="submit">Sim, excluir</button>
-    </form>
-
-    <a href="{%url 'agenda:contato_detalhe' contato.pk %}">Cancelar</a>
+    <div class="container">
+        <h1>Confirmar Exclusão</h1>
+        <p>Tem certeza de que deseja excluir o contato **"{{ contato.nome }}"**?</p>
+        <form method="post" style="display: inline-block;">
+            {% csrf_token %}
+            <button type="submit" class="delete-button">Sim, Excluir</button>
+        </form>
+        <a href="{% url 'agenda:contato_detalhe' contato.pk %}" class="back-link">Cancelar</a>
+    </div>
 </body>
 </html>
+

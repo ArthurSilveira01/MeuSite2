@@ -1,20 +1,29 @@
+<!-- agenda/templates/agenda/contato_detalhe.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>{{ contato.nome }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ contato.nome }} - Detalhes do Contato</title>
+    <link rel="stylesheet" href="{% static 'agenda/style.css' %}">
 </head>
 <body>
-    <h1>Detalhes de {{ contato.nome }}</h1>
-    <p> <strong>Nome:</strong> {{ contato.nome}}</p>
-    <p> <strong>Telefone:</strong> {{ contato.telefone|default:"Não informado"}}</p>
-    <p> <strong>Endereço:</strong> {{ contato.endereco|default:"Não informado"}}</p>
-    <p> <strong>E-mail:</strong> {{ contato.email|default:"Não informado"}}</p>
-    <p> <strong>Data de nascimento:</strong>
-        {{ contato.data_de_nascimento|date:"d/m/Y"|default:"Não informado" }}</p>
-    <p> <strong>Criado em:</strong> {{ contato.created_at|date:"d/m/Y" }}</p>
+    <div class="container">
+        <h1>Detalhes de {{ contato.nome }}</h1>
+        <p><strong>Nome:</strong> {{ contato.nome }}</p>
+        <p><strong>Telefone:</strong> {{ contato.telefone|default:"Não informado" }}</p>
+        <p><strong>Endereço:</strong> {{ contato.endereco|default:"Não informado" }}</p>
+        <p><strong>Email:</strong> {{ contato.email|default:"Não informado" }}</p>
+        <p><strong>Data de Nascimento:</strong> {{ contato.data_de_nascimento|date:"d/m/Y"|default:"Não informado" }}</p>
+        <p><strong>Criado em:</strong> {{ contato.created_at|date:"d/m/Y H:i" }}</p>
 
-    <a href="{% url 'agenda:contato_editar.html' contato.pk %}">Voltar</a>
-    <a href="{% url 'agenda:contato_lista' %}">Voltar</a>
+        <div class="actions">
+            <a href="{% url 'agenda:contato_editar' contato.pk %}" class="edit-link">Editar</a>
+            <a href="{% url 'agenda:contato_excluir' contato.pk %}" class="delete-link">Excluir</a>
+        </div>
+        <a href="{% url 'agenda:contato_lista' %}" class="back-link">Voltar para a lista</a>
+    </div>
 </body>
 </html>
+

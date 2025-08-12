@@ -1,16 +1,27 @@
+<!-- agenda/templates/agenda/contato_form.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>{{titulo_pagina}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo_pagina }}</title>
+    <link rel="stylesheet" href="{% static 'agenda/style.css' %}">
 </head>
 <body>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-
-        <button type="submit">Salvar Contato</button>
-        <a href="{%url 'agenda:contato_lista' %}">Cancelar</a>
-    </form>
+    <div class="container">
+        <h1>{{ titulo_pagina }}</h1>
+        <form method="post" class="form-container">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-field-container">
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <button type="submit">Salvar Contato</button>
+            <a href="{% url 'agenda:contato_lista' %}" class="back-link">Cancelar</a>
+        </form>
+    </div>
 </body>
 </html>
